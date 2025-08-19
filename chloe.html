@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mil English 에세이 평가 보고서 - 제인 구달</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans KR', sans-serif;
+            background-color: #f8fafc;
+        }
+        .report-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        .report-header {
+            background-color: #6d28d9; /* Purple */
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .report-header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: --0.025em;
+        }
+        .report-header p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        .section {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+        }
+        .section-title svg {
+            width: 28px;
+            height: 28px;
+            margin-right: 0.75rem;
+            color: #6d28d9;
+        }
+        .original-essay {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #374151;
+            white-space: pre-wrap;
+        }
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .rubric-table th, .rubric-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .rubric-table th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            color: #374151;
+        }
+        .rubric-table td .score {
+            font-size: 1.125rem; /* Adjusted font size */
+            font-weight: 700;
+            color: #6d28d9;
+            white-space: nowrap; /* Prevents wrapping */
+        }
+        .rubric-table tfoot td {
+            font-weight: 700;
+        }
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .skill-card {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid #e5e7eb;
+        }
+        .skill-card h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        .skill-card .level {
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+        }
+        .level-intermediate { background-color: #ffedd5; color: #c2410c; }
+        .level-proficient { background-color: #dbeafe; color: #1e40af; }
+        .level-advanced { background-color: #d1fae5; color: #065f46; }
+        .skill-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #4b5563;
+        }
+        .correction-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .correction-table th, .correction-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border: 1px solid #e5e7eb;
+            vertical-align: top;
+        }
+        .correction-table th {
+            background-color: #f3f4f6;
+        }
+        .original-sentence {
+            color: #ef4444;
+        }
+        .corrected-sentence {
+            color: #22c55e;
+            font-weight: 500;
+        }
+        .final-essay {
+            background-color: #f5f3ff;
+            border-left: 4px solid #6d28d9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+        .letter {
+            background-color: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 8px;
+            padding: 2rem;
+            line-height: 1.7;
+        }
+        .letter h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ca8a04;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="report-container">
+        <header class="report-header">
+            <h1>mil English 에세이 평가 보고서</h1>
+            <p>존경하는 인물: 제인 구달</p>
+        </header>
+
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+                학생 원본 에세이
+            </h3>
+            <div class="original-essay">
+<strong>Title: The person I admire</strong>
+
+Who is someone you admire? Jane goodall is admired and known for studying ANIMALS and she is sending message that animals are important. I admire Jane goodall because she has courage and she was curious, interested in animals. To start with, I admire Jane goodall because she had courage and is brave. Jane goodall was scared but she had courage to make her dream true. For instance, Jane goodall was afraid and nervous of the new landscape of Tanzania. But she worked with her own and achived her goal. She lived with chimpanzees for 26 years! This shows that Jane goodall is very brave because she had courage even if she was nervous.
+
+In addition, Jane goodall is curious and interested in many areas. Jane goodall worked hard to answer curiousity even when she was a kid. For example, when she was a kid, she was interested when chicken lay their egg. So, she hid in a hay for one week! Therefore, Jane goodall's curiousity in her childhood helped her be successful! In conclusion, Jane goodall is the person I admire in history due to her bravery and many interests. Jane goodall's dream because of her great courage and hard work to her curiousity in her childhood. everyone-including you, can follow your dream by being heroic
+            </div>
+        </section>
+
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                평가 점수 (엄격한 기준 적용)
+            </h3>
+            <table class="rubric-table">
+                <thead>
+                    <tr>
+                        <th>평가 항목</th>
+                        <th>점수</th>
+                        <th>분석</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>구성 및 구조 (40점)</td>
+                        <td><span class="score">25 / 40</span></td>
+                        <td>에세이에 좋은 구조를 위한 아이디어(서론, 본론, 결론)는 포함되어 있으나, 문단 나누기를 사용해 아이디어를 시각적으로 분리하지 않았습니다. 서론과 본론1, 본론2와 결론을 합친 것은 중대한 구조적 오류입니다.</td>
+                    </tr>
+                    <tr>
+                        <td>어휘 선택 및 문장 유창성 (30점)</td>
+                        <td><span class="score">21 / 30</span></td>
+                        <td>`courage`, `curiosity`, `landscape`, `achieved`와 같은 좋은 어휘를 사용했습니다. 그러나 이러한 핵심 단어들이 과도하게 반복되어(예: 'courage' 4회 사용) 문장의 유창성과 설득력을 저해합니다.</td>
+                    </tr>
+                    <tr>
+                        <td>문법 및 규칙 (30점)</td>
+                        <td><span class="score">20 / 30</span></td>
+                        <td>일관성 없는 동사 시제, 잘못된 단어 형태, 철자 오류(`achived`, `curiousity`), 그리고 특히 결론 부분의 문장 단편(sentence fragment) 등 여러 문법적 오류가 포함되어 있습니다.</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td><strong>총점</strong></td>
+                        <td colspan="2"><span class="score">66 / 100</span></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 100 15 7.5 7.5 0 000-15zM21 21l-5.197-5.197" /></svg>
+                학생 역량 분석
+            </h3>
+            <div class="skill-grid">
+                <div class="skill-card">
+                    <h4>어휘 (Vocabulary)</h4>
+                    <span class="level level-proficient">Proficient (G4)</span>
+                    <p><strong>강점:</strong> `courage`, `curiosity`, `landscape`, `achieved`와 같이 주제에 대해 깊이 생각했음을 보여주는 구체적이고 적절한 어휘를 사용합니다.</p>
+                    <p><strong>성장 영역:</strong> 반복을 피하는 것이 가장 중요합니다. 다음 단계로 나아가려면 핵심 용어의 동의어(예: `courage` 대신 `bravery`, `fearlessness`; `curious` 대신 `inquisitive`)를 사용하는 연습이 필요합니다.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>문법 및 부호 (Grammar & Punctuation)</h4>
+                    <span class="level level-intermediate">Intermediate (G3)</span>
+                    <p><strong>강점:</strong> 기본적인 문장 부호를 올바르게 사용하며 다양한 유형의 문장을 구성할 수 있습니다.</p>
+                    <p><strong>성장 영역:</strong> 일관된 동사 시제 유지(과거와 현재 시제 혼용), 올바른 단어 형태 사용(`curiousity` vs. `curiosity`), 그리고 철자법 교정이 핵심 개선 영역입니다.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>문장 구조 (Sentence Structure)</h4>
+                    <span class="level level-intermediate">Intermediate (G3)</span>
+                    <p><strong>강점:</strong> 본론 문단들이 명확한 주제 문장으로 구성되어 있어 에세이 구조에 대한 이해도를 보여줍니다.</p>
+                    <p><strong>성장 영역:</strong> 결론 부분에 불완전한 문장 단편(fragment)들이 포함되어 있습니다. 이는 특히 복잡한 마무리 아이디어를 표현할 때 문장 구성 능력이 아직 발전 중임을 나타냅니다.</p>
+                </div>
+                 <div class="skill-card">
+                    <h4>종합 평가 (Overall Essay)</h4>
+                    <span class="level level-intermediate">Intermediate (G3)</span>
+                    <p><strong>강점:</strong> 사려 깊은 아이디어와 적절한 예시를 담고 있습니다. 작가의 목소리가 분명하고 주제에 대한 강한 유대감을 보여줍니다.</p>
+                    <p><strong>성장 영역:</strong> 문단 나누기의 부재라는 중대한 구조적 결함과 반복적인 어휘, 기계적 오류들로 인해 높은 수준의 에세이가 되지 못했습니다. 문단 나누기를 마스터하는 것이 가장 시급한 다음 단계입니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
+                문장별 첨삭 지도
+            </h3>
+            <div class="correction-table-container overflow-x-auto">
+                <table class="correction-table">
+                    <thead>
+                        <tr><th>원본 문장</th><th>교정 문장</th><th>친절한 설명</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="original-sentence">Who is someone you admire?</td><td class="corrected-sentence">Good Sentence.</td><td>독자의 참여를 유도하는 훌륭한 시작 문장(hook)이에요.</td></tr>
+                        <tr><td class="original-sentence">Jane goodall is admired and known for studying ANIMALS and she is sending message that animals are important.</td><td class="corrected-sentence"><strong>Jane Goodall</strong> is admired and known for studying animals, and she sends a message that animals are important.</td><td>고유명사(Jane Goodall)는 대문자로 시작해야 해요. 'ANIMALS'는 모두 대문자로 쓸 필요 없어요. 'is sending'보다 'sends'가 더 간결한 표현이에요.</td></tr>
+                        <tr><td class="original-sentence">I admire Jane goodall because she has courage and she was curious, interested in animals.</td><td class="corrected-sentence">I admire <strong>Jane Goodall</strong> because she <strong>had</strong> courage and was curious and interested in animals.</td><td>동사 시제를 맞춰주는 것이 좋아요. 'was curious'라고 과거형을 썼으니, 'courage'도 과거형인 'had'로 써주는 게 자연스러워요.</td></tr>
+                        <tr><td class="original-sentence">To start with, I admire Jane goodall because she had courage and is brave.</td><td class="corrected-sentence">To start with, I admire <strong>Jane Goodall</strong> because she was courageous and brave.</td><td>'had courage'와 'is brave'는 시제가 달라요. 같은 과거 시제 동사 'was'를 사용해서 'courageous and brave'라고 두 개의 형용사를 연결하는 것이 더 부드러워요.</td></tr>
+                        <tr><td class="original-sentence">Jane goodall was scared but she had courage to make her dream true.</td><td class="corrected-sentence"><strong>Jane Goodall</strong> was scared, but she had the courage to make her dream come true.</td><td>영어에서 '꿈을 이루다'는 보통 'make a dream come true'라고 표현해요.</td></tr>
+                        <tr><td class="original-sentence">For instance, Jane goodall was afraid and nervous of the new landscape of Tanzania.</td><td class="corrected-sentence">For instance, <strong>Jane Goodall</strong> was afraid and nervous about the new landscape of Tanzania.</td><td>이 문맥에서 'nervous'와 함께 쓰이는 올바른 전치사는 'of'가 아니라 'about'이에요.</td></tr>
+                        <tr><td class="original-sentence">But she worked with her own and achived her goal.</td><td class="corrected-sentence">But she worked on her own and <strong>achieved</strong> her goal.</td><td>'혼자 힘으로'라는 표현은 'on her own'이에요. 'achieved'의 철자가 틀렸어요.</td></tr>
+                        <tr><td class="original-sentence">She lived with chimpanzees for 26 years!</td><td class="corrected-sentence">Good Sentence.</td><td>주장을 뒷받침하는 강력하고 사실에 기반한 좋은 문장이에요.</td></tr>
+                        <tr><td class="original-sentence">This shows that Jane goodall is very brave because she had courage even if she was nervous.</td><td class="corrected-sentence">This shows that <strong>Jane Goodall</strong> was very brave because she showed courage even when she was nervous.</td><td>역사적 인물에 대해 이야기하므로 과거 시제('was')를 사용하는 것이 더 일관성 있어요. 'Showed courage'가 더 힘 있는 표현이에요.</td></tr>
+                        <tr><td class="original-sentence">In addition, Jane goodall is curious and interested in many areas.</td><td class="corrected-sentence">In addition, <strong>Jane Goodall</strong> was curious and interested in many areas.</td><td>에세이의 일관성을 위해 과거 시제 'was'를 사용했어요.</td></tr>
+                        <tr><td class="original-sentence">Jane goodall worked hard to answer curiousity even when she was a kid.</td><td class="corrected-sentence"><strong>Jane Goodall</strong> worked hard to satisfy her <strong>curiosity</strong>, even when she was a kid.</td><td>'curiosity'의 철자가 틀렸어요. 'answer curiosity'보다 'satisfy her curiosity'(호기심을 충족시키다)가 더 자연스러운 표현이에요.</td></tr>
+                        <tr><td class="original-sentence">For example, when she was a kid, she was interested when chicken lay their egg.</td><td class="corrected-sentence">For example, when she was a kid, she was interested in <strong>how</strong> chickens lay their eggs.</td><td>과정을 설명할 때는 'interested in how...'라는 구문을 사용해야 해요.</td></tr>
+                        <tr><td class="original-sentence">So, she hid in a hay for one week!</td><td class="corrected-sentence">So, she hid in a henhouse for hours to watch them!</td><td>유명한 일화를 더 정확하게 수정했어요. 그녀는 건초더미에서 일주일이 아니라, 닭장에서 몇 시간 동안 숨어 있었어요.</td></tr>
+                        <tr><td class="original-sentence">Therefore, Jane goodall's curiousity in her childhood helped her be successful!</td><td class="corrected-sentence">Therefore, <strong>Jane Goodall's</strong> <strong>curiosity</strong> in her childhood helped her become successful!</td><td>'curiosity'의 철자를 고쳤어요. 'be successful'보다 'become successful'(성공하게 되다)이 이 문장에서는 더 좋은 표현이에요.</td></tr>
+                        <tr><td class="original-sentence">In conclusion, Jane goodall is the person I admire in history due to her bravery and many interests.</td><td class="corrected-sentence">In conclusion, <strong>Jane Goodall</strong> is the person I admire in history due to her bravery and great curiosity.</td><td>'many interests'는 조금 막연해요. 'great curiosity'(엄청난 호기심)가 두 번째 본론의 주제와 더 잘 연결돼요.</td></tr>
+                        <tr><td class="original-sentence">Jane goodall's dream because of her great courage and hard work to her curiousity in her childhood.</td><td class="corrected-sentence">She <strong>achieved</strong> Jane Goodall's dream because of her great courage and the hard work driven by her childhood curiosity.</td><td>이 문장은 불완전한 문장 단편(fragment)이었어요. 의미가 명확해지도록 완전한 문장으로 다시 작성했어요.</td></tr>
+                        <tr><td class="original-sentence">everyone-including you, can follow your dream by being heroic</td><td class="corrected-sentence">Everyone, including you, can follow their dream by being heroic.</td><td>이 문장 역시 불완전했어요. 완전한 문장으로 만들었어요. 'everyone'을 받을 때는 'their'를 사용하는 것이 좋아요.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.837 19.54a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" /></svg>
+                최종 수정본 에세이
+            </h3>
+            <div class="final-essay">
+                <strong>The Person I Admire: Jane Goodall</strong><br><br>
+                Who is someone you admire? Jane Goodall is admired and known for studying animals, and she sends a message that they are important. I admire Jane Goodall because she had great courage and was deeply curious about animals.<br><br>
+                To start with, I admire Jane Goodall because she was courageous. Even when she was scared, she had the bravery to make her dream come true. For instance, she was afraid and nervous about the new landscape of Tanzania, but she worked on her own and achieved her goal. She lived with chimpanzees for 26 years! This shows that Jane Goodall was very brave because she showed courage even when she was nervous.<br><br>
+                In addition, Jane Goodall was a very curious person. She worked hard to satisfy her curiosity, even when she was a kid. For example, when she was a child, she was interested in how chickens lay their eggs, so she hid in a henhouse for hours just to watch them! Therefore, Jane Goodall's curiosity in her childhood helped her become successful.<br><br>
+                In conclusion, Jane Goodall is the person I admire in history due to her bravery and great curiosity. She achieved her dream because of her courage and the hard work driven by her childhood curiosity. Everyone, including you, can follow their dream by being heroic.
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="letter">
+                <h4>학생에게 보내는 편지</h4>
+                <p>학생에게,</p>
+                <p class="mt-4">제인 구달에 대한 이 에세이는 정말 훌륭해요. 왜 그녀를 존경하는지 아주 잘 설명했고, 글에는 힘 있는 아이디어와 흥미로운 예시들이 가득하네요.</p>
+                <p class="mt-4">이 글의 가장 큰 <strong>강점</strong>은 아이디어의 명확한 흐름입니다. 훌륭한 서론, 구체적인 성격(용기, 호기심)에 초점을 맞춘 두 개의 본론, 그리고 사려 깊은 결론을 갖추고 있어요. 선택한 예시들도 주장을 뒷받침하는 데 매우 효과적이었어요.</p>
+                <p class="mt-4">우리가 함께 성장해 나갈 부분은 <strong>글의 구성</strong>과 <strong>문장 다듬기</strong>입니다. 가장 중요한 다음 단계는 서론, 첫 번째 중심 생각, 두 번째 중심 생각, 그리고 결론을 각각 별개의 문단으로 나누는 것입니다. 이러한 시각적 분리는 공식적인 에세이에서 매우 중요해요. 또한, 에세이 마지막 부분의 문장들이 불완전했어요. 모든 문장이 완전한 생각인지 확인하는 시간을 가지면 글이 훨씬 더 좋아질 거예요.</p>
+                <p class="mt-4">한 가지 <strong>제안</strong>을 할게요. 글을 쓰기 전에, 최소 4개의 문단을 만들겠다고 계획해보세요. 각각을 별도의 상자라고 생각하는 거예요. 시작을 위한 상자 하나, 첫 번째 큰 아이디어를 위한 상자 하나, 두 번째 큰 아이디어를 위한 상자 하나, 그리고 마무리를 위한 상자 하나. 이렇게 하면 페이지 위에서 글을 구성하는 데 도움이 될 거예요.</p>
+                <p class="mt-4">학생은 이야기를 전달하는 재능이 있는 작가예요. 문단 나누기에 집중하고 문장을 확인하는 연습을 조금만 더 하면, 정말 뛰어난 에세이를 쓸 수 있을 거예요!</p>
+                <p class="mt-6 font-semibold text-right">- 글쓰기 코치 드림</p>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
