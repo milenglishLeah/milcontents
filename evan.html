@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mil English 에세이 평가 보고서</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .report-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        .report-header {
+            background-color: #8b5cf6; /* Purple */
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .report-header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+        .report-header p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        .section {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+        }
+        .section-title svg {
+            width: 28px;
+            height: 28px;
+            margin-right: 0.75rem;
+            color: #8b5cf6;
+        }
+        .original-essay {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #374151;
+            white-space: pre-wrap;
+        }
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .rubric-table th, .rubric-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+            vertical-align: top;
+        }
+        .rubric-table th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            color: #374151;
+        }
+        .rubric-table td .score {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #8b5cf6;
+            margin-right: 1rem;
+            white-space: nowrap;
+        }
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .skill-card {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid #e5e7eb;
+        }
+        .skill-card h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        .skill-card .level {
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .level-novice { background-color: #fee2e2; color: #b91c1c; }
+        .level-intermediate { background-color: #ffedd5; color: #c2410c; }
+        .level-advanced { background-color: #dbeafe; color: #1e40af; }
+        .skill-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #4b5563;
+        }
+        .skill-card p strong {
+            color: #374151;
+        }
+        .correction-step {
+            margin-bottom: 2rem;
+        }
+        .correction-step h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #8b5cf6;
+            display: inline-block;
+        }
+        .correction-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .correction-table th, .correction-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border: 1px solid #e5e7eb;
+        }
+        .correction-table th {
+            background-color: #f3f4f6;
+        }
+        .original-sentence {
+            color: #ef4444;
+        }
+        .corrected-sentence {
+            color: #22c55e;
+            font-weight: 500;
+        }
+        .final-essay {
+            background-color: #f5f3ff;
+            border-left: 4px solid #8b5cf6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+        .letter {
+            background-color: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 8px;
+            padding: 2rem;
+            line-height: 1.7;
+        }
+        .letter h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ca8a04;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="report-container">
+        <!-- Report Header -->
+        <header class="report-header">
+            <h1>mil English 에세이 평가 보고서</h1>
+            <p>학생: Lung Fish 에세이</p>
+        </header>
+
+        <!-- Original Student Essay -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+                학생 원본 에세이
+            </h3>
+            <div class="original-essay">
+<strong>Lung Fish</strong>
+
+Do you know the uguliest fish? A lung fish lives in humid places and swims in the muddy water. My favorite animal is a lung fish because I like the way it looks and it is interesting.
+
+First, I like the way the lung fish looks. The lung fish looks like a snail without a shell. Most people think it is very ugly. For example, my teacher thought it was ugly. However, I think it is unique and cute. Therefore, I think it looks special.
+
+Second, the lung fish is an intersting animal. The lung fish has a mud cocoon that cools them off. For example, the lung fish is hot it makes a mud cocoon. Therefore, the lung fish is an fascinating creature.
+
+In conclusion, I think a lung fish is the best animal because it is cool and intresting. I like the lung fish because it looks unique and has a mud cocoon. I wish people can think that the lung fish is cool as their favorite animal.
+            </div>
+        </section>
+
+        <!-- Comprehensive Evaluation -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                종합 평가
+            </h3>
+            <table class="rubric-table">
+                <thead>
+                    <tr>
+                        <th class="w-1/4">평가 항목</th>
+                        <th>점수 및 분석</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>구성 및 구조</td>
+                        <td>
+                            <div class="flex items-start">
+                                <span class="score">38 / 40</span>
+                                <p class="text-gray-600">글의 구조가 정말 훌륭해요! 👏 G3 에세이의 모든 필수 요소(훅, 주제문, 본문, 결론)를 완벽하게 갖추고 있어요. 각 문단이 논리적으로 잘 연결되어 글의 흐름이 매우 자연스러워요.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>내용 전개 및 상세화</td>
+                        <td>
+                            <div class="flex items-start">
+                                <span class="score">25 / 30</span>
+                                <p class="text-gray-600">자신의 생각을 뒷받침하는 예시들이 좋아요. 특히 '진흙 고치'에 대한 설명은 아주 구체적이에요. 다만, 첫 번째 본문의 예시("my teacher thought it was ugly")는 조금 더 발전시킬 수 있었어요. 선생님의 생각을 인용하는 것보다 폐어의 독특한 외모를 더 자세히 묘사했다면 훨씬 좋았을 거예요.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>언어 및 규칙</td>
+                        <td>
+                            <div class="flex items-start">
+                                <span class="score">18 / 30</span>
+                                <p class="text-gray-600">'unique', 'fascinating' 같은 멋진 단어들을 사용했지만, 철자 실수가 여러 번 있었고 문장 구조가 단조로운 점이 아쉬워요. 특히 첫 번째 본문은 짧고 비슷한 문장들이 반복되어 G3 수준의 다양성을 보여주지 못했어요.</p>
+                            </div>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td><strong>총점</strong></td>
+                        <td><span class="score">81 / 100</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Student's Level Assessment -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 100 15 7.5 7.5 0 000-15zM21 21l-5.197-5.197" /></svg>
+                학생 역량 분석
+            </h3>
+            <div class="skill-grid">
+                <div class="skill-card">
+                    <h4>어휘 (Vocabulary)</h4>
+                    <span class="level level-advanced">Advanced (G3)</span>
+                    <p><strong>분석:</strong> 어휘 수준은 <strong>Advanced (G3)</strong> 단계예요. 'humid', 'unique', 'fascinating', 'cocoon'과 같은 G3 수준의 단어를 정확하게 사용했어요. 하지만, "I like the way the lung fish looks"나 "the lung fish is an interesting animal"처럼 좋은 표현이 반복되었어요. 다음에는 "Its appearance is very special to me" 또는 "Another remarkable feature of the lung fish is..." 와 같이 다양하게 표현해 보세요.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>문법 (Grammar)</h4>
+                    <span class="level level-intermediate">Intermediate (G2)</span>
+                    <p><strong>분석:</strong> 문법 수준은 <strong>Intermediate (G2)</strong> 단계예요. 문장 대부분은 문법적으로 훌륭하지만, 몇 가지 오류가 있어요.
+                    <br><strong>철자 오류 (Spelling Error):</strong> 가장 흔한 실수였어요. 예를 들어, 'uguliest'는 '<strong>ugliest</strong>'로, 'intersting'은 '<strong>interesting</strong>'으로 써야 해요. 단어를 쓸 때 소리를 하나씩 생각해보면 도움이 될 거예요.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>문장 구조 (Sentence Structure)</h4>
+                    <span class="level level-intermediate">Intermediate (G2)</span>
+                    <p><strong>분석:</strong> 문장 구조는 <strong>Intermediate (G2)</strong> 단계예요. 'because'를 사용한 복잡한 문장을 쓸 수 있는 점은 훌륭해요. 하지만, 첫 번째 본문 문단처럼 대부분의 문장이 짧고 단순한 구조("The lung fish looks...", "Most people think...", "I think...")로 되어 있어 단조롭게 느껴질 수 있어요. 다양한 문장 구조를 섞어 쓰는 연습을 하면 글이 훨씬 생동감 넘칠 거예요.</p>
+                </div>
+                 <div class="skill-card">
+                    <h4>에세이 구조 (Essay Structure)</h4>
+                    <span class="level level-advanced">Advanced (G3)</span>
+                    <p><strong>분석:</strong> 에세이 구조는 <strong>Advanced (G3)</strong> 단계예요. G3 에세이의 모든 필수 요소를 갖추고 있어요.
+                    <br><strong>Hook (훅):</strong> "Do you know the uguliest fish?"라는 질문은 독자의 호기심을 자극하는 훌륭한 시작이에요.
+                    <br><strong>Thesis (주제문):</strong> "My favorite animal is a lung fish because I like the way it looks and it is interesting." 이라는 문장으로 글의 중심 생각을 명확하게 밝혔어요.
+                    <br><strong>Body (본문):</strong> 두 개의 본문 문단이 각각 주제 문장, 예시, 그리고 맺음 문장("Therefore...")으로 완벽하게 구성되어 있어요.
+                    <br><strong>Conclusion (결론):</strong> 내용을 요약하고, 마지막 생각("I wish people can think...")까지 포함하여 글을 멋지게 마무리했어요.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Writing Corrections -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
+                글쓰기 교정
+            </h3>
+            <div class="correction-step">
+                <div class="correction-table-container overflow-x-auto">
+                    <table class="correction-table">
+                        <thead>
+                            <tr><th>원본 문장</th><th>수정본 (1단계)</th><th>추천 수정안 (2단계)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="original-sentence">Do you know the uguliest fish?</td>
+                                <td class="corrected-sentence">Do you know the <strong>ugliest</strong> fish?</td>
+                                <td><strong>설명:</strong> 'ugliest'의 철자를 고쳤어요.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">A lung fish lives in humid places and swims in the muddy water.</td>
+                                <td class="corrected-sentence">A <strong>lungfish</strong> lives in humid places and swims in the muddy water.</td>
+                                <td><strong>설명:</strong> 'lungfish'는 보통 한 단어로 붙여 써요.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">My favorite animal is a lung fish because I like the way it looks and it is interesting.</td>
+                                <td class="corrected-sentence">My favorite animal is a <strong>lungfish</strong> because I like the way it looks and it is interesting.</td>
+                                <td><strong>설명:</strong> 'lungfish'를 한 단어로 고쳤어요.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">First, I like the way the lung fish looks.</td>
+                                <td class="corrected-sentence">First, I like the way the <strong>lungfish</strong> looks.</td>
+                                <td><strong>설명:</strong> 'lungfish'를 한 단어로 고쳤어요.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">The lung fish looks like a snail without a shell.</td>
+                                <td class="corrected-sentence">The <strong>lungfish</strong> looks like a snail without a shell.</td>
+                                <td><strong>설명:</strong> 'lungfish'를 한 단어로 고쳤어요.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">Most people think it is very ugly.</td>
+                                <td class="corrected-sentence" colspan="2">오류 없음.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">For example, my teacher thought it was ugly.</td>
+                                <td class="corrected-sentence" colspan="2">오류 없음.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">However, I think it is unique and cute.</td>
+                                <td class="corrected-sentence" colspan="2">오류 없음.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">Therefore, I think it looks special.</td>
+                                <td class="corrected-sentence" colspan="2">오류 없음.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">Second, the lung fish is an intersting animal.</td>
+                                <td class="corrected-sentence">Second, the <strong>lungfish</strong> is an <strong>interesting</strong> animal.</td>
+                                <td><strong>설명:</strong> 'lungfish'와 'interesting'의 철자를 고쳤어요.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">The lung fish has a mud cocoon that cools them off.</td>
+                                <td class="corrected-sentence">The <strong>lungfish</strong> has a mud cocoon that cools <strong>it</strong> off.</td>
+                                <td><strong>설명:</strong> 'lungfish'는 한 마리(단수)이므로 'them' 대신 'it'을 써야 해요.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">For example, the lung fish is hot it makes a mud cocoon.</td>
+                                <td class="corrected-sentence">For example, <strong>when</strong> the <strong>lungfish</strong> is hot, it makes a mud cocoon.</td>
+                                <td><strong>설명:</strong> 두 문장을 자연스럽게 연결하기 위해 'when'(~할 때)이 필요해요.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">Therefore, the lung fish is an fascinating creature.</td>
+                                <td class="corrected-sentence">Therefore, the <strong>lungfish</strong> is a fascinating creature.</td>
+                                <td><strong>설명:</strong> 'fascinating'은 'f' 소리로 시작하므로 'an' 대신 'a'를 써야 해요.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">In conclusion, I think a lung fish is the best animal because it is cool and intresting.</td>
+                                <td class="corrected-sentence">In conclusion, I think a <strong>lungfish</strong> is the best animal because it is cool and <strong>interesting</strong>.</td>
+                                <td><strong>설명:</strong> 'lungfish'와 'interesting'의 철자를 고쳤어요.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">I like the lung fish because it looks unique and has a mud cocoon.</td>
+                                <td class="corrected-sentence">I like the <strong>lungfish</strong> because it looks unique and has a mud cocoon.</td>
+                                <td><strong>설명:</strong> 'lungfish'를 한 단어로 고쳤어요.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">I wish people can think that the lung fish is cool as their favorite animal.</td>
+                                <td class="corrected-sentence">I wish people <strong>could</strong> think that the <strong>lungfish</strong> is cool enough to be their favorite animal.</td>
+                                <td><strong>설명:</strong> '~라면 좋을 텐데'라는 소망을 나타낼 때는 'can'보다 'could'를 쓰는 것이 더 자연스러워요. 문장의 의미를 명확하게 다듬었어요.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Revised Essay -->
+        <section class="section">
+             <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" /></svg>
+                최종 수정본 에세이
+            </h3>
+            <div class="final-essay">
+                <strong>The Amazing Lungfish</strong><br><br>
+                What do you think is the most unusual fish in the world? A lungfish lives in humid places and swims in muddy water. My favorite animal is the lungfish because of its unique appearance and its interesting survival skills.<br><br>
+                First, I am drawn to the lungfish's unique appearance. Its appearance is similar to a snail without a shell. Although most people think it is very ugly, I find it to be unique and cute. Therefore, I believe its appearance makes it a one-of-a-kind creature.<br><br>
+                Second, the lungfish is a truly fascinating animal because of how it survives. It has a special ability to create a mud cocoon that cools it off. For example, to survive the heat, it creates a mud cocoon to cool itself off. Therefore, this survival skill makes the lungfish an amazing creature.<br><br>
+                In conclusion, I believe the lungfish is a superb animal because of its cool and interesting traits. I like the lungfish because it looks unique and has a mud cocoon. I wish more people would consider the lungfish as their favorite animal, too.
+            </div>
+        </section>
+
+        <!-- Letter to Student -->
+        <section class="section">
+            <div class="letter">
+                <h4>학생에게 보내는 편지</h4>
+                <p class="mt-4">학생의 'Lung Fish' 에세이를 정말 흥미롭게 읽었어요. 다른 사람들이 잘 모르는 특별한 동물을 선택해서 자신의 생각을 명확하게 표현하는 모습이 정말 인상 깊었어요.</p>
+                <p class="mt-4">학생의 가장 큰 <strong>강점</strong>은 글을 체계적으로 구성하는 능력이에요. 서론, 본론, 결론의 구조가 완벽하고, 각 문단이 논리적으로 연결되어 있어요. G3 수준을 넘어서는 훌륭한 실력이에요.</p>
+                <p class="mt-4">우리가 함께 발전시켜 나갈 부분은 <strong>문장의 다양성</strong>과 <strong>철자의 정확성</strong>이에요. 글의 구조는 훌륭하지만, 첫 번째 본문처럼 짧고 단순한 문장들이 반복되어 조금 단조롭게 느껴질 수 있어요. 또한, 몇몇 단어에서 철자 실수가 있었어요.</p>
+                <p class="mt-4">한 가지 <strong>제안</strong>을 할게요. 다음 글을 쓸 때는, 문장을 시작하는 방식을 다양하게 바꿔보는 연습을 해보세요. 예를 들어, "The lungfish looks..." 대신 "Its appearance is similar to..." 와 같이 시작할 수 있어요. 또한, 글을 다 쓴 후에 소리 내어 읽어보면 철자 실수를 쉽게 찾을 수 있을 거예요.</p>
+                <p class="mt-4">학생은 이미 논리적으로 생각하고 글을 쓰는 능력을 갖추고 있어요. 여기에 정확성과 다양한 문장 표현을 더한다면, 정말 뛰어난 글을 쓸 수 있을 거예요!</p>
+                <p class="mt-6 font-semibold text-right">- 선생님 드림</p>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
