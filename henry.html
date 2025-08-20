@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mil English 에세이 평가 보고서</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .report-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        .report-header {
+            background-color: #8b5cf6; /* Purple */
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .report-header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+        .report-header p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        .section {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+        }
+        .section-title svg {
+            width: 28px;
+            height: 28px;
+            margin-right: 0.75rem;
+            color: #8b5cf6;
+        }
+        .original-essay {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #374151;
+            white-space: pre-wrap;
+        }
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .rubric-table th, .rubric-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+            vertical-align: top;
+        }
+        .rubric-table th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            color: #374151;
+        }
+        .rubric-table td .score {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #8b5cf6;
+            margin-right: 1rem;
+            white-space: nowrap;
+        }
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .skill-card {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid #e5e7eb;
+        }
+        .skill-card h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        .skill-card .level {
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .level-novice { background-color: #fee2e2; color: #b91c1c; }
+        .level-intermediate { background-color: #ffedd5; color: #c2410c; }
+        .level-advanced { background-color: #dbeafe; color: #1e40af; }
+        .skill-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #4b5563;
+        }
+        .skill-card p strong {
+            color: #374151;
+        }
+        .correction-step {
+            margin-bottom: 2rem;
+        }
+        .correction-step h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #8b5cf6;
+            display: inline-block;
+        }
+        .correction-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .correction-table th, .correction-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border: 1px solid #e5e7eb;
+        }
+        .correction-table th {
+            background-color: #f3f4f6;
+        }
+        .original-sentence {
+            color: #ef4444;
+        }
+        .corrected-sentence {
+            color: #22c55e;
+            font-weight: 500;
+        }
+        .final-essay {
+            background-color: #f5f3ff;
+            border-left: 4px solid #8b5cf6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+        .letter {
+            background-color: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 8px;
+            padding: 2rem;
+            line-height: 1.7;
+        }
+        .letter h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ca8a04;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="report-container">
+        <!-- Report Header -->
+        <header class="report-header">
+            <h1>mil English 에세이 평가 보고서</h1>
+            <p>학생 에세이: My favorite animal is a parrot.</p>
+        </header>
+
+        <!-- Original Student Essay -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+                학생 원본 에세이
+            </h3>
+            <div class="original-essay">
+<strong>Title: My favorite animal is a parrot.</strong>
+
+Do you know an animal that can talk? Parrots can! They live in many different places around the world and can copy what people say. My favorite animal is the parrot because they are smart and beautiful.
+
+First, parrot are very smart. They can talk to people. For example, they can say "Hello" and even sing song like "Happy Birthday." I saw it on TV, and it was amazing! That is why I think I think parrots are very intelligent.
+
+Second, parrots are beautiful. They have colorful feathers with red, orange, yellow, green and even blue and white patterns. When they fly in the sky, they look like flying rainbows. For these reasons, I think parrots are very pretty.
+
+Inconclusion, I think parrots are the best animals because they are intelligent and colorful. They can talk and have beautiful feathers. If you want a smart and pretty pet, you should choose a parrot!
+            </div>
+        </section>
+
+        <!-- Comprehensive Evaluation -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                종합 평가
+            </h3>
+            <table class="rubric-table">
+                <thead>
+                    <tr>
+                        <th class="w-1/4">평가 항목</th>
+                        <th>점수 및 분석</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>구성 및 구조</td>
+                        <td>
+                            <div class="flex items-start">
+                                <span class="score">40 / 40</span>
+                                <p class="text-gray-600">글의 구조가 완벽해요! 👏 G3 에세이의 모든 필수 요소(훅, 배경 정보, 주제문, 본문, 결론)를 정확하게 갖추고 있어요. 각 문단이 논리적으로 잘 연결되어 글의 흐름이 매우 자연스러워요.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>내용 전개 및 상세화</td>
+                        <td>
+                            <div class="flex items-start">
+                                <span class="score">30 / 30</span>
+                                <p class="text-gray-600">아이디어를 설명하는 예시들이 아주 훌륭해요! 앵무새가 "생일 축하" 노래를 부르는 예시는 매우 구체적이고 재미있어요. 앵무새를 "날아다니는 무지개"라고 묘사한 부분은 학생의 창의력을 잘 보여줘요.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>언어 및 규칙</td>
+                        <td>
+                            <div class="flex items-start">
+                                <span class="score">21 / 30</span>
+                                <p class="text-gray-600">'intelligent'나 'patterns' 같은 좋은 단어들을 사용했지만, 문장 구조가 다소 반복적이고 단순한 점이 아쉬워요. 또한, 주어와 동사의 수를 맞추는 것("parrot are" -> "parrots are")과 같은 기본적인 문법 실수가 꾸준히 발견되어 점수에 영향을 주었어요.</p>
+                            </div>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td><strong>총점</strong></td>
+                        <td><span class="score">91 / 100</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Student's Level Assessment -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 100 15 7.5 7.5 0 000-15zM21 21l-5.197-5.197" /></svg>
+                학생 역량 분석
+            </h3>
+            <div class="skill-grid">
+                <div class="skill-card">
+                    <h4>어휘 (Vocabulary)</h4>
+                    <span class="level level-advanced">Advanced (G3)</span>
+                    <p><strong>분석:</strong> 어휘 수준은 <strong>Advanced (G3)</strong> 단계예요. 'intelligent', 'colorful', 'patterns'와 같이 구체적이고 적절한 단어를 사용했어요. 단어 반복도 거의 없었어요. 더 높은 수준으로 나아가기 위해, 'beautiful'과 'pretty' 대신 G3 어휘인 '<strong>vibrant</strong>'(생동감 넘치는)나 '<strong>magnificent</strong>'(장엄한) 같은 동의어를 사용해 볼 수 있어요.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>문법 (Grammar)</h4>
+                    <span class="level level-intermediate">Intermediate (G2)</span>
+                    <p><strong>분석:</strong> 문법 수준은 <strong>Intermediate (G2)</strong> 단계예요. 대부분의 문장은 정확하지만, 한 가지 유형의 오류가 꾸준히 나타났어요.
+                    <br><strong>주어-동사 수 일치 (Subject-Verb Agreement):</strong> 이것이 가장 주된 문제였어요. 주어가 복수(여러 개, 예: "parrots")일 때는 동사에 's'가 붙지 않아요. 주어가 단수(한 개, 예: "parrot")일 때는 동사에 's'가 붙는 경우가 많아요. 예를 들어, "parrot are"는 "<strong>parrots are</strong>"가 되어야 해요.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>문장 구조 (Sentence Structure)</h4>
+                    <span class="level level-intermediate">Intermediate (G2)</span>
+                    <p><strong>분석:</strong> 문장 구조는 <strong>Intermediate (G2)</strong> 단계예요. "When they fly..."와 같이 복잡한 문장을 사용할 수 있지만, 글의 대부분이 "They can...", "They have..." 와 같이 주어+동사+목적어(S+V+O) 형태의 단순하고 짧은 문장으로 이루어져 있어요. G3 수준이 되려면, 문장들을 연결하거나 시작하는 방식을 더 다양하게 바꾸는 연습이 필요해요.</p>
+                </div>
+                 <div class="skill-card">
+                    <h4>에세이 구조 (Essay Structure)</h4>
+                    <span class="level level-advanced">Advanced (G3)</span>
+                    <p><strong>분석:</strong> 에세이 구조는 <strong>Advanced (G3)</strong> 단계예요. G3 형식의 모든 요소를 완벽하게 마스터했어요.
+                    <br><strong>Hook (훅):</strong> "Do you know an animal that can talk?"는 완벽한 훅이에요.
+                    <br><strong>배경 정보 & 주제문:</strong> 배경 정보를 제공한 후, 두 가지 이유가 담긴 명확한 주제문을 제시했어요.
+                    <br><strong>본문:</strong> 두 개의 본문 문단 모두 명확한 주제 문장, 예시, 그리고 맺음 문장을 갖추고 있어요.
+                    <br><strong>결론:</strong> 주제문을 재진술하고, 본문 내용을 요약한 뒤, 멋진 마지막 생각으로 마무리했어요.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Writing Corrections -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
+                글쓰기 교정
+            </h3>
+            <div class="correction-step">
+                <div class="correction-table-container overflow-x-auto">
+                    <table class="correction-table">
+                        <thead>
+                            <tr><th>원본 문장</th><th>수정본 (1단계)</th><th>추천 수정안 (2단계)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="original-sentence">Do you know an animal that can talk?</td>
+                                <td class="corrected-sentence" colspan="2">오류 없음. 완벽한 훅이에요!</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">Parrots can!</td>
+                                <td class="corrected-sentence" colspan="2">오류 없음.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">They live in many different places around the world and can copy what people say.</td>
+                                <td class="corrected-sentence" colspan="2">오류 없음.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">My favorite animal is the parrot because they are smart and beautiful.</td>
+                                <td class="corrected-sentence" colspan="2">오류 없음. 훌륭한 주제문이에요.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">First, parrot are very smart.</td>
+                                <td class="corrected-sentence">First, <strong>parrots are</strong> very smart.</td>
+                                <td><strong>설명:</strong> 일반적으로 앵무새 전체를 이야기하고 있으므로(한 마리 이상), 주어 'parrot'은 복수형인 'parrots'가 되어야 해요. 복수 주어 'parrots'는 동사 'are'와 짝을 이뤄요.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">They can talk to people.</td>
+                                <td class="corrected-sentence">오류 없음.</td>
+                                <td><strong>추천 수정안:</strong> Their intelligence is shown by their ability to talk to people. (설명: '그들은 ~할 수 있다'는 단순한 구조 대신, '그들의 지능은 ~하는 능력으로 보여진다'와 같이 더 고급 문장으로 표현했어요.)</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">For example, they can say "Hello" and even sing song like "Happy Birthday."</td>
+                                <td class="corrected-sentence">For example, they can say "Hello" and even sing <strong>songs</strong> like "Happy Birthday."</td>
+                                <td><strong>설명:</strong> 앵무새는 한 곡 이상의 노래를 부를 수 있으므로, 'song'은 복수형인 'songs'가 되어야 해요.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">I saw it on TV, and it was amazing!</td>
+                                <td class="corrected-sentence" colspan="2">오류 없음.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">That is why I think I think parrots are very intelligent.</td>
+                                <td class="corrected-sentence">That is why I think parrots are very intelligent.</td>
+                                <td><strong>설명:</strong> 'I think'라는 표현이 반복되었어요. 하나를 빼서 문장을 명확하게 만들었어요.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">Second, parrots are beautiful.</td>
+                                <td class="corrected-sentence" colspan="2">오류 없음.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">They have colorful feathers with red, orange, yellow, green and even blue and white patterns.</td>
+                                <td class="corrected-sentence">They have colorful feathers with red, orange, yellow, green, and even blue and white patterns.</td>
+                                <td><strong>설명:</strong> 세 개 이상의 항목을 나열할 때는 'and' 앞을 포함하여 각 항목 뒤에 쉼표(,)를 찍어주는 것이 좋아요.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">When they fly in the sky, they look like flying rainbows.</td>
+                                <td class="corrected-sentence" colspan="2">오류 없음. 아주 아름다운 문장이에요!</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">For these reasons, I think parrots are very pretty.</td>
+                                <td class="corrected-sentence" colspan="2">오류 없음.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">Inconclusion, I think parrots are the best animals because they are intelligent and colorful.</td>
+                                <td class="corrected-sentence"><strong>In conclusion,</strong> I think parrots are the best animals because they are intelligent and colorful.</td>
+                                <td><strong>설명:</strong> 'In conclusion'의 철자를 고쳤어요. 두 단어로 나누어 써야 해요.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">They can talk and have beautiful feathers.</td>
+                                <td class="corrected-sentence" colspan="2">오류 없음.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">If you want a smart and pretty pet, you should choose a parrot!</td>
+                                <td class="corrected-sentence" colspan="2">오류 없음. 훌륭한 마지막 생각이에요!</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Revised Essay -->
+        <section class="section">
+             <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" /></svg>
+                최종 수정본 에세이
+            </h3>
+            <div class="final-essay">
+                <strong>My Favorite Animal: The Parrot</strong><br><br>
+                Do you know an animal that can talk? Parrots can! Living in many different places around the world, they can copy what people say. My favorite animal is the parrot because they are both intelligent and beautiful.<br><br>
+                First, parrots are very smart animals. Their intelligence is shown by their ability to talk to people. For example, they can say "Hello" and even sing songs like "Happy Birthday." I saw a parrot do this on TV, and it was amazing! That is why I believe parrots are very intelligent creatures.<br><br>
+                Second, parrots are beautiful birds. Their feathers are incredibly colorful, with red, orange, yellow, green, and even blue and white patterns. When they fly in the sky, they look like flying rainbows. For these reasons, I think parrots are very pretty.<br><br>
+                In conclusion, I think parrots are the best animals because they are both intelligent and colorful. Not only can they talk, but they also have beautiful feathers. If you want a smart and pretty pet, you should choose a parrot!
+            </div>
+        </section>
+
+        <!-- Letter to Student -->
+        <section class="section">
+            <div class="letter">
+                <h4>학생에게 보내는 편지</h4>
+                <p class="mt-4">앵무새에 대한 에세이를 정말 훌륭하게 썼어요! 학생의 글은 명확하고, 재미있고, 읽기 쉬웠어요. 정말 깊은 인상을 받았어요.</p>
+                <p class="mt-4">학생의 가장 큰 <strong>강점</strong>은 글을 완벽한 구조로 짜는 능력과, 생각을 뒷받침하는 구체적인 예시를 드는 능력이에요. "날아다니는 무지개"라는 표현은 정말 창의적이고 아름다웠어요.</p>
+                <p class="mt-4">우리가 함께 발전시켜 나갈 부분은 <strong>문장 구조의 다양성</strong>과 <strong>문법의 정확성</strong>이에요. 글의 구조는 훌륭하지만, 많은 문장이 주어+동사+목적어 형태의 단순한 구조로 반복되었어요. 또한, 주어와 동사의 수를 맞추는 것과 같은 작은 문법 실수들이 있었어요.</p>
+                <p class="mt-4">한 가지 <strong>제안</strong>을 할게요. 다음 글을 쓸 때는, 문장을 시작하는 방식을 다양하게 바꿔보는 연습을 해보세요. 예를 들어, "They have colorful feathers..." 대신 "Their feathers are incredibly colorful..." 와 같이 시작할 수 있어요. 이렇게 하면 글이 훨씬 더 생동감 넘치게 될 거예요.</p>
+                <p class="mt-4">학생은 이미 Advanced (G3) 수준의 구조와 내용을 갖춘 글을 쓸 수 있어요. 여기에 문장 다양성과 문법 정확성만 더해진다면, 정말 뛰어난 작가가 될 수 있을 거예요!</p>
+                <p class="mt-6 font-semibold text-right">- 선생님 드림</p>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
