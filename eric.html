@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mil English Essay Evaluation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .report-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        .report-header {
+            background-color: #8B5CF6;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .report-header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+        .report-header p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        .section {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+        }
+        .section-title svg {
+            width: 28px;
+            height: 28px;
+            margin-right: 0.75rem;
+            color: #8B5CF6;
+        }
+        .original-essay {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #374151;
+            white-space: pre-wrap;
+        }
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .rubric-table th, .rubric-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .rubric-table th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            color: #374151;
+        }
+        .rubric-table td .score {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #ef4444;
+            white-space: nowrap;
+        }
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .skill-card {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid #e5e7eb;
+        }
+        .skill-card h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        .skill-card .level {
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .level-novice { background-color: #fee2e2; color: #b91c1c; }
+        .level-intermediate { background-color: #ffedd5; color: #c2410c; }
+        .level-advanced { background-color: #dbeafe; color: #1e40af; }
+        .skill-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #4b5563;
+        }
+        .skill-card p strong {
+            color: #374151;
+        }
+        .correction-step {
+            margin-bottom: 2rem;
+        }
+        .correction-step:last-child {
+            margin-bottom: 0;
+        }
+        .correction-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .correction-table th, .correction-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border: 1px solid #e5e7eb;
+        }
+        .correction-table th {
+            background-color: #f3f4f6;
+        }
+        .original-sentence {
+            color: #ef4444;
+            font-style: italic;
+        }
+        .corrected-sentence {
+            color: #22c55e;
+            font-weight: 500;
+        }
+        .final-essay {
+            background-color: #f5f3ff;
+            border-left: 4px solid #8B5CF6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            line-height: 1.8;
+            font-family: 'Times New Roman', serif;
+        }
+        .final-essay strong {
+            color: #6d28d9;
+        }
+        .letter-section {
+            background-color: #fffbeb;
+            border-top: 1px solid #fde68a;
+            padding: 2rem;
+        }
+        .letter-section h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ca8a04;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        .letter-section h4 svg {
+            width: 28px;
+            height: 28px;
+            margin-right: 0.75rem;
+        }
+        .letter-section p {
+            line-height: 1.8;
+            color: #4b5563;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="report-container">
+        <!-- 보고서 헤더 -->
+        <header class="report-header">
+            <h1>mil English Essay Evaluation</h1>
+            <p>학생 에세이 분석 보고서</p>
+        </header>
+
+        <!-- 파트 A: 학생 원본 에세이 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+                파트 A: 학생 원본 에세이
+            </h3>
+            <div class="original-essay">
+Friendship that can end was never real." - G.K. Chesterton. Having a friend means that you have a person that you can show affection and count on. Making friendship ongoing for a long time takes lots of effort. Friendship can make you feel distinct feelings such as, ecstasy and woefulness. One superb way to make important friendship last is to share memories and experiences, respect each other, and be open minded.
+
+The communication is key tool to make a continuous friendship. The first way to communicate is listen friends word carefully. For example, Marie Curie and Albert Einstein met through scientific conferness, their relationship is begin with listen carefully. Next, we need to alway say real things to the friend. These can be a factor to last friendship forever. To illustrate, Franklin D. Roosevelt, and Winston Churchill was at World war II they discussed, and shared sense, so the friendship influced global history. These to ways are invaluable to maintain frienship forever.
+
+Making a diffrent quality times with friend is a supreme way to make a stationary friendship Making many memories with friend is a superb way to be a best friendship. For example, the John Lennon, and Paul McCartney created most influential songs in the music history. They shared passion for songwriting as a teenagers. Their connection showed ever. Secondly, If you go to the vacation, you will be rejoice and excited. For example, I was 10 years old I go to a vacation with a friend. So, the friendship began forever. The quality times are essential to make a constant friendship.
+
+The balance is a necessary way to make a perpetual friendship. The mutual respect is a important way to make a balance. Specifically, the Hellen keller was deaf, and blind. But, the Anne Sulivan throug Empathy, so they were mutual respect. The Fair Exchange can make a sustain friendship. For example, Bill Gates, and Paul Allen dreated a new computer. Because of doing fair exchange and make a strong friendship. Therefore, the balance can cause colossal beneficial effects to friendship.
+
+There are so plenty diffrent ways to make a friendship last like communication, quality times, and balance. I think the friendship is key for making a great life.
+            </div>
+        </section>
+
+        <!-- 파트 B: 종합 평가 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                파트 B: 종합 평가
+            </h3>
+            <div class="correction-step">
+                <h4>100점 만점 채점 기준표</h4>
+                <table class="rubric-table">
+                    <thead>
+                        <tr>
+                            <th>Category (평가 항목)</th>
+                            <th>Score (점수)</th>
+                            <th>Analysis (분석)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Organization & Structure (구성 및 구조)</td>
+                            <td><span class="score">22 / 40</span></td>
+                            <td>에세이의 기본 5단락 구조를 이해하고 있으나, 서론과 결론이 매우 짧고 본론 단락의 시작이 Topic Sentence가 아닌 새로운 Thesis Statement처럼 느껴져 혼란을 줍니다. 본론 단락 내 아이디어 전개 또한 체계적이지 않습니다.</td>
+                        </tr>
+                        <tr>
+                            <td>Word Choice & Sentence Fluency (어휘 선택 및 문장 유창성)</td>
+                            <td><span class="score">19 / 30</span></td>
+                            <td>`ecstasy`, `perpetual`, `invaluable`, `colossal` 등 G6(Advanced) 수준의 어휘를 사용하려는 시도는 훌륭하지만, 단어의 형태나 문맥상 쓰임이 틀린 경우가 많습니다('conferness', 'influced'). 이로 인해 문장이 어색하고 의미 전달이 명확하지 않습니다.</td>
+                        </tr>
+                        <tr>
+                            <td>Grammar & Mechanics (문법 및 체계)</td>
+                            <td><span class="score">15 / 30</span></td>
+                            <td>주어-동사 불일치(`relationship is begin`), 시제 오류(`I go to a vacation`), 철자 오류(`diffrent`), 관사 누락 등 기본적인 문법 오류가 글 전체에 걸쳐 빈번하게 나타납니다. 문법적 정확성을 높이는 것이 시급합니다.</td>
+                        </tr>
+                         <tr>
+                            <td><strong>총점 (Total Score)</strong></td>
+                            <td colspan="2"><span class="score" style="color: #8B5CF6;"><strong>56 / 100</strong></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="correction-step">
+                <h4>Writing Level Assessment</h4>
+                <div class="skill-grid">
+                    <div class="skill-card">
+                        <h4>어휘 (Vocabulary)</h4>
+                        <span class="level level-intermediate">Intermediate</span>
+                        <p><strong>분석:</strong> G6(Advanced) 어휘에 도전하는 모습은 매우 긍정적입니다. 예를 들어, <strong>"...the balance can cause colossal beneficial effects to friendship"</strong> 문장은 어려운 단어를 조합하여 복잡한 생각을 표현하려는 좋은 시도입니다. 하지만 단어의 정확한 형태와 의미를 확인하는 연습이 필요합니다.</p>
+                        <p><strong>반복 어휘 및 대체 어휘 제안:</strong><br>
+                           - <strong>반복 표현:</strong> `make a friendship`<br>
+                           - <strong>대체 표현:</strong> `build`, `develop`, `sustain`, `maintain` a friendship<br>
+                           - <strong>반복 표현:</strong> `friend`<br>
+                           - <strong>대체 표현:</strong> `companion`, `ally`, `confidant`</p>
+                    </div>
+                    <div class="skill-card">
+                        <h4>문법 (Grammar)</h4>
+                        <span class="level level-novice">Novice</span>
+                        <p><strong>분석:</strong> 문법적 오류가 많아 글의 전문성을 떨어뜨리고 의미를 혼란스럽게 합니다. 예를 들어, <strong>"Franklin D. Roosevelt, and Winston Churchill was at World war II they discussed..."</strong> 문장은 주어(`Roosevelt and Churchill`)가 복수임에도 단수 동사 `was`를 사용했고, 두 문장이 쉼표만으로 연결되는 오류(comma splice)를 포함하고 있습니다.</p>
+                    </div>
+                    <div class="skill-card">
+                        <h4>문장 구조 (Sentence Structure)</h4>
+                        <span class="level level-novice">Novice</span>
+                        <p><strong>분석:</strong> 대부분의 문장이 단순한 구조로 이루어져 있으며, 복잡한 문장을 시도할 때 오류가 자주 발생합니다. 예를 들어, <strong>"Making a diffrent quality times with friend is a supreme way to make a stationary friendship Making many memories with friend is a superb way to be a best friendship."</strong>는 두 개의 독립된 문장이 마침표 없이 이어져 있습니다.</p>
+                    </div>
+                    <div class="skill-card">
+                        <h4>에세이 구조 (Essay Structure)</h4>
+                        <span class="level level-intermediate">Intermediate</span>
+                        <p><strong>분석:</strong> 5단락 구조를 시도한 점은 좋으나, 각 단락의 역할에 대한 이해가 부족합니다. 예를 들어, 첫 번째 본론 단락의 시작 문장인 <strong>"The communication is key tool to make a continuous friendship"</strong>은 서론의 주제문을 반복하는 것처럼 들려 글의 흐름을 방해합니다. 본론은 주제문을 뒷받침하는 구체적인 내용으로 시작해야 합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 파트 C: Writing Corrections -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
+                파트 C: Writing Corrections
+            </h3>
+            <div class="overflow-x-auto">
+                <table class="correction-table">
+                    <thead>
+                        <tr><th>원문 (Original)</th><th>수정본 (Correction / Suggested Improvement)</th><th>설명 (Explanation)</th></tr>
+                    </thead>
+                    <tbody>
+                        <!-- Introduction -->
+                        <tr><td class="original-sentence">Did you know the friendship can be constant more than 100 years?</td><td class="corrected-sentence">Did you know that a friendship can be constant for more than 100 years?</td><td>`that`을 추가하고 `a friendship`으로 바꾸는 것이 더 자연스럽습니다.</td></tr>
+                        <tr><td class="original-sentence">I think the friendship is a crucial gate to be a ecstasy life for you.</td><td class="corrected-sentence">I think that friendship is a crucial gate to an ecstatic life.</td><td>`the friendship`보다 일반적인 `friendship`이 낫습니다. `ecstasy life`는 어색하며, 형용사 `ecstatic`을 사용해야 합니다.</td></tr>
+                        <tr><td class="original-sentence">There are so many distinct ways to make a friendship sustain like communication, quality times, and balance.</td><td class="corrected-sentence">There are many distinct ways to sustain a friendship, such as through communication, quality time, and balance.</td><td>`sustain`의 위치를 바꾸고 `quality time`은 보통 단수로 사용합니다.</td></tr>
+                        <!-- Body 1 -->
+                        <tr><td class="original-sentence">The communication is key tool to make a continuous friendship.</td><td class="corrected-sentence"><strong>Communication</strong> is a key tool for making a continuous friendship.</td><td>문단 시작 문장은 들여쓰기를 합니다. `The communication`보다 일반적인 `Communication`이 맞습니다.</td></tr>
+                        <tr><td class="original-sentence">The first way to communicate is listen friends word carefully.</td><td class="corrected-sentence">The first way to communicate is to listen to a friend's words carefully.</td><td>`listen` 앞에 `to`가 필요하고, 소유격과 전치사를 추가하여 문장을 완성했습니다.</td></tr>
+                        <tr><td class="original-sentence">For example, Marie Curie and Albert Einstein met through scientific conferness, their relationship is begin with listen carefully.</td><td class="corrected-sentence">For example, Marie Curie and Albert Einstein met through scientific conferences, and their relationship began with listening carefully to each other.</td><td>철자(`conferness`), 동사 형태(`is begin`), 그리고 문장 구조를 수정했습니다.</td></tr>
+                        <tr><td class="original-sentence">Next, we need to alway say real things to the friend.</td><td class="corrected-sentence">Next, we need to always say true things to our friends.</td><td>철자(`alway`)를 수정하고 더 자연스러운 단어를 사용했습니다.</td></tr>
+                        <tr><td class="original-sentence">These can be a factor to last friendship forever.</td><td class="corrected-sentence">This can be a factor in making a friendship last forever.</td><td>`These`는 단수 `This`가 되어야 하고, 문장 구조를 더 자연스럽게 수정했습니다.</td></tr>
+                        <tr><td class="original-sentence">To illustrate, Franklin D. Roosevelt, and Winston Churchill was at World war II they discussed, and shared sense, so the friendship influced global history.</td><td class="corrected-sentence">To illustrate, during World War II, Franklin D. Roosevelt and Winston Churchill discussed and shared ideas, and their friendship influenced global history.</td><td>주어가 복수이므로 `were`를 써야 합니다. 문장이 너무 길고 복잡하여 의미에 맞게 재구성하고 철자(`influced`)를 수정했습니다.</td></tr>
+                        <tr><td class="original-sentence">These to ways are invaluable to maintain frienship forever.</td><td class="corrected-sentence">These two ways are invaluable for maintaining a friendship forever.</td><td>철자(`to`, `frienship`)를 수정하고 전치사를 변경했습니다.</td></tr>
+                        <!-- Body 2 -->
+                        <tr><td class="original-sentence">Making a diffrent quality times with friend is a supreme way to make a stationary friendship Making many memories with friend is a superb way to be a best friendship.</td><td class="corrected-sentence">Spending quality time with friends is a supreme way to build a stable friendship. Making many memories with friends is a superb way to have the best friendships.</td><td>두 문장을 분리하고, 철자(`diffrent`), 단어 선택(`stationary`), 문장 구조를 수정했습니다.</td></tr>
+                        <tr><td class="original-sentence">They shared passion for songwriting as a teenagers.</td><td class="corrected-sentence">They shared a passion for songwriting as teenagers.</td><td>`passion` 앞에 관사 `a`를 추가하고, `teenagers` 앞의 `a`를 삭제했습니다.</td></tr>
+                        <tr><td class="original-sentence">Their connection showed ever.</td><td class="corrected-sentence">Their connection was evident.</td><td>`showed ever`는 의미가 불분명합니다. `was evident`(분명했다)로 수정했습니다.</td></tr>
+                        <tr><td class="original-sentence">Secondly, If you go to the vacation, you will be rejoice and excited.</td><td class="corrected-sentence">Secondly, if you go on vacation with friends, you will feel joyful and excited.</td><td>`go on vacation`이 올바른 표현입니다. `rejoice`는 동사이므로 형용사 `joyful`을 사용했습니다.</td></tr>
+                        <tr><td class="original-sentence">For example, I was 10 years old I go to a vacation with a friend.</td><td class="corrected-sentence">For example, when I was 10 years old, I went on a vacation with a friend.</td><td>두 문장을 `when`으로 연결하고 동사 시제를 과거형(`went`)으로 수정했습니다.</td></tr>
+                        <tr><td class="original-sentence">So, the friendship began forever.</td><td class="corrected-sentence">That was the beginning of a friendship that has lasted a long time.</td><td>`began forever`는 어색한 표현입니다. 의미를 살려 자연스러운 문장으로 수정했습니다.</td></tr>
+                        <tr><td class="original-sentence">The quality times are essential to make a constant friendship.</td><td class="corrected-sentence">Quality time is essential for making a constant friendship.</td><td>`Quality time`은 보통 단수로 사용하므로 동사도 `is`가 되어야 합니다.</td></tr>
+                        <!-- Body 3 -->
+                        <tr><td class="original-sentence">The balance is a necessary way to make a perpetual friendship.</td><td class="corrected-sentence">Balance is a necessary component of a perpetual friendship.</td><td>일반적인 `Balance`를 사용하고, `way`보다 `component`(요소)가 더 적절합니다.</td></tr>
+                        <tr><td class="original-sentence">The mutual respect is a important way to make a balance.</td><td class="corrected-sentence">Mutual respect is an important way to create balance.</td><td>`important` 앞에 관사 `an`을 사용하고, `make`보다 `create`가 더 자연스럽습니다.</td></tr>
+                        <tr><td class="original-sentence">Specifically, the Hellen keller was deaf, and blind.</td><td class="corrected-sentence">Specifically, Helen Keller was deaf and blind.</td><td>이름의 철자를 수정했습니다.</td></tr>
+                        <tr><td class="original-sentence">But, the Anne Sulivan throug Empathy, so they were mutual respect.</td><td class="corrected-sentence">But Anne Sullivan showed empathy, and so they had mutual respect.</td><td>문장 구조가 불완전하여 동사 `showed`를 추가하고, 철자(`Sulivan`, `throug`)를 수정했습니다.</td></tr>
+                        <tr><td class="original-sentence">The Fair Exchange can make a sustain friendship.</td><td class="corrected-sentence">A fair exchange can help sustain a friendship.</td><td>`sustain`은 동사이므로 앞에 `help`를 추가하여 문장을 완성했습니다.</td></tr>
+                        <tr><td class="original-sentence">For example, Bill Gates, and Paul Allen dreated a new computer.</td><td class="corrected-sentence">For example, Bill Gates and Paul Allen created a new computer company.</td><td>철자(`dreated`)를 수정하고, 의미를 명확히 하기 위해 `company`를 추가했습니다.</td></tr>
+                        <tr><td class="original-sentence">Because of doing fair exchange and make a strong friendship.</td><td class="corrected-sentence">They built a strong friendship because they engaged in a fair exchange of ideas.</td><td>불완전한 문장이므로 완전한 문장으로 재구성했습니다.</td></tr>
+                        <tr><td class="original-sentence">Therefore, the balance can cause colossal beneficial effects to friendship.</td><td class="corrected-sentence">Therefore, balance can have colossal beneficial effects on a friendship.</td><td>전치사 `on`이 더 자연스럽습니다.</td></tr>
+                        <!-- Conclusion -->
+                        <tr><td class="original-sentence">There are so plenty diffrent ways to make a friendship last like communication, quality times, and balance.</td><td class="corrected-sentence">There are plenty of different ways to make a friendship last, such as through communication, quality time, and balance.</td><td>`so plenty`는 어색합니다. 철자(`diffrent`)를 수정하고 문장 구조를 다듬었습니다.</td></tr>
+                        <tr><td class="original-sentence">I think the friendship is key for making a great life.</td><td class="corrected-sentence">I think that friendship is the key to making a great life.</td><td>`the key to`가 올바른 표현입니다.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 파트 D: 최종 수정본 에세이 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
+                파트 D: 최종 수정본 에세이
+            </h3>
+            <div class="final-essay">
+                <strong>What Makes a Friendship Last</strong><br><br>
+                Did you know that a friendship can be <strong>constant</strong> for more than 100 years? I believe that friendship is a crucial gateway to an <strong>ecstatic</strong> life. There are many <strong>distinct</strong> ways to <strong>sustain</strong> a friendship, such as through communication, quality time, and balance.<br><br>
+                Communication is a key tool for making a friendship <strong>continuous</strong>. The first step in good communication is to listen to a friend's words carefully. For example, the relationship between Marie Curie and Albert Einstein began at scientific conferences, where they listened carefully to each other's ideas. Next, we must always be truthful with our friends. This can be a <strong>factor</strong> in making a friendship last forever. To illustrate, during World War II, Franklin D. Roosevelt and Winston Churchill discussed and shared ideas, and their friendship influenced global history. These two practices are <strong>invaluable</strong> for maintaining a friendship.<br><br>
+                Spending quality time with friends is a <strong>supreme</strong> way to build a <strong>stable</strong> friendship. Making memories together is a <strong>superb</strong> way to form the strongest bonds. For example, John Lennon and Paul McCartney created some of the most influential songs in music history because they shared a passion for songwriting as teenagers. Furthermore, going on vacations with friends can be a joyful and exciting experience. For instance, a vacation I took with a friend when I was ten years old was the beginning of a friendship that has lasted a long time. Quality time is <strong>essential</strong> for making a friendship <strong>constant</strong>.<br><br>
+                Balance is a necessary component of a <strong>perpetual</strong> friendship. Mutual respect is an important way to create that balance. Specifically, Helen Keller was deaf and blind, but her teacher, Anne Sullivan, showed great empathy, which allowed them to have mutual respect. A fair exchange also helps to <strong>sustain</strong> a friendship. For example, Bill Gates and Paul Allen built a strong friendship while creating their computer company because they engaged in a fair exchange of ideas. Therefore, balance can have <strong>colossal</strong> and <strong>beneficial</strong> effects on a friendship.<br><br>
+                In conclusion, there are plenty of different ways to make a friendship last, including communication, quality time, and balance. I believe that friendship is the key to living a great life.
+            </div>
+        </section>
+        
+        <!-- 학생에게 보내는 편지 -->
+        <section class="letter-section">
+            <h4>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                학생에게 보내는 편지
+            </h4>
+            <p>학생에게,</p>
+            <p class="mt-4">'오래가는 우정'에 대한 새로운 에세이 잘 읽었어요. 이번 글에서도 역시 `ecstasy`, `perpetual`, `colossal`과 같은 매우 높은 수준의 어휘를 사용하려는 학생의 열정이 돋보였습니다. 특히 의사소통, 좋은 시간 보내기, 그리고 균형이라는 세 가지 이유를 들어 우정을 설명한 점이 매우 논리적이었습니다.</p>
+            <p class="mt-4"><strong>에세이의 가장 큰 강점</strong>은 <strong>풍부하고 구체적인 예시</strong>를 사용했다는 점입니다. 마리 퀴리와 아인슈타인, 레논과 매카트니, 헬렌 켈러와 설리번 선생님 등 역사적인 인물들의 관계를 예로 들어 자신의 주장을 뒷받침하려는 시도는 글을 매우 흥미롭게 만듭니다.</p>
+            <p class="mt-4"><strong>한 단계 더 성장하기 위한 제안:</strong> 학생의 멋진 아이디어와 어휘력이 빛을 발하려면, 글의 <strong>기본적인 규칙</strong>을 더 단단하게 다지는 것이 중요합니다.
+            <ul>
+                <li class="mt-2"><strong>1. 문장의 완성도 높이기:</strong> 모든 문장이 주어와 동사를 제대로 갖추었는지 확인하는 연습이 필요합니다. 예를 들어, "The Fair Exchange can make a sustain friendship" 문장은 "A fair exchange can help sustain a friendship"으로 고쳐야 완전한 의미를 전달할 수 있습니다.</li>
+                <li class="mt-2"><strong>2. 문단 구성 다듬기:</strong> 각 본론 단락의 첫 문장은 서론의 주제문을 그대로 반복하기보다, 그 문단에서 설명할 내용을 구체적으로 안내하는 'Topic Sentence' 역할을 해야 합니다. 예를 들어, 첫 본론의 시작을 "The communication is key tool..." 대신 "First, friends must communicate effectively to sustain their bond" 와 같이 시작하면 글의 흐름이 더 자연스러워집니다.</li>
+            </ul>
+            </p>
+            <p class="mt-4">학생은 이미 작가처럼 풍부한 자료를 찾아내고 그것을 글로 연결하는 능력을 보여주었습니다. 이제 문법과 문장 구조라는 튼튼한 그릇에 그 아이디어들을 담아내는 연습을 한다면, 훨씬 더 설득력 있고 완성도 높은 글을 쓸 수 있을 거예요. 지금처럼 계속 도전해주세요!</p>
+            <p class="mt-6 font-semibold text-right">- 글쓰기 코치 드림</p>
+        </section>
+
+    </div>
+
+</body>
+</html>
